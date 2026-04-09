@@ -1,0 +1,1 @@
+LexiBattle is a real-time multiplayer web application designed to improve English vocabulary through gamified learning. It features live rooms, timed quizzes, leaderboards, and interactive gameplay to make language learning engaging and competitive.
