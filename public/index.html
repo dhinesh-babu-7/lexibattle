@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiBattle | Master English</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+    <!-- Landing Page -->
+    <div id="landing-screen" class="screen active">
+        <h1 class="logo">Lexi<span>Battle</span></h1>
+        <p class="tagline">Battle Words. Master English.</p>
+        <div class="card">
+            <input type="text" id="username" placeholder="Enter your display name..." maxlength="15">
+            <input type="text" id="room-code-input" placeholder="Room Code (to join)" maxlength="6">
+            <div class="btn-group">
+                <button id="create-room-btn" class="btn primary">Create Room</button>
+                <button id="join-room-btn" class="btn secondary">Join Room</button>
+            </div>
+            <p id="error-msg" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Lobby Screen -->
+    <div id="lobby-screen" class="screen">
+        <h2>Room Code: <span id="display-room-code" class="highlight"></span></h2>
+        <div class="lobby-container">
+            <div class="players-list-box">
+                <h3>Players (<span id="player-count">1</span>/50)</h3>
+                <ul id="players-list"></ul>
+            </div>
+            <button id="start-game-btn" class="btn primary hidden">Start Battle</button>
+            <p id="waiting-msg">Waiting for host to start...</p>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="level-badge" id="q-level">Medium</div>
+            <div class="timer" id="timer">10</div>
+        </div>
+        
+        <div class="question-box">
+            <p id="q-type">Synonym</p>
+            <h2 id="question-text">Loading question...</h2>
+        </div>
+
+        <div class="options-grid" id="options-grid">
+            <!-- Buttons injected via JS -->
+        </div>
+
+        <!-- Mini Chat + Leaderboard -->
+        <div class="game-footer">
+            <div class="live-leaderboard">
+                <h3>Top Players</h3>
+                <ol id="live-leaderboard-list"></ol>
+            </div>
+            <div class="chat-box">
+                <div id="chat-messages"></div>
+                <input type="text" id="chat-input" placeholder="Send a message...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="result-screen" class="screen">
+        <h1>Lexi Champion 👑</h1>
+        <h2 id="winner-name" class="highlight"></h2>
+        
+        <div class="podium" id="podium">
+            <!-- Top 3 injected here -->
+        </div>
+
+        <h3>Learning Review</h3>
+        <div class="review-box" id="review-box">
+            <!-- Explanations injected here -->
+        </div>
+        
+        <button onclick="location.reload()" class="btn primary">Play Again</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

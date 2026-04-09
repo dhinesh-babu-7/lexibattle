@@ -1,0 +1,83 @@
+:root {
+    --bg: #0f0f1b;
+    --card-bg: #1a1a2e;
+    --primary: #e94560;
+    --secondary: #0f3460;
+    --text: #ffffff;
+    --highlight: #00f2fe;
+    --correct: #4caf50;
+    --wrong: #f44336;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+    background-color: var(--bg); color: var(--text);
+    display: flex; justify-content: center; align-items: center; min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.screen { display: none; width: 100%; max-width: 800px; padding: 20px; text-align: center; }
+.screen.active { display: block; animation: fadeIn 0.5s; }
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+/* Typography */
+.logo { font-size: 4rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+.logo span { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+.tagline { font-size: 1.2rem; color: #aaa; margin-bottom: 30px; }
+.highlight { color: var(--highlight); text-shadow: 0 0 10px var(--highlight); }
+
+/* Forms & Buttons */
+.card { background: var(--card-bg); padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+input { width: 100%; padding: 15px; margin-bottom: 15px; border: none; border-radius: 8px; background: #22223b; color: white; font-size: 1rem; outline: none; transition: 0.3s; }
+input:focus { box-shadow: 0 0 10px var(--secondary); }
+
+.btn-group { display: flex; gap: 10px; }
+.btn { flex: 1; padding: 15px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+.btn.primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4); }
+.btn.primary:hover { background: #ff5c77; transform: translateY(-2px); }
+.btn.secondary { background: var(--secondary); color: white; }
+.btn.secondary:hover { background: #164a8a; }
+
+.hidden { display: none !important; }
+.error { color: var(--wrong); margin-top: 10px; font-weight: bold; }
+
+/* Lobby */
+.lobby-container { background: var(--card-bg); padding: 20px; border-radius: 10px; margin-top: 20px; }
+#players-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 15px; }
+#players-list li { background: var(--secondary); padding: 10px; border-radius: 5px; font-weight: bold; }
+
+/* Game Screen */
+.game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.level-badge { background: var(--secondary); padding: 5px 15px; border-radius: 20px; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+.timer { font-size: 2.5rem; font-weight: bold; color: var(--highlight); text-shadow: 0 0 15px var(--highlight); }
+
+.question-box { background: var(--card-bg); padding: 30px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
+#q-type { color: var(--highlight); font-weight: bold; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+.option-btn { background: #22223b; color: white; border: 2px solid transparent; padding: 20px; border-radius: 10px; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+.option-btn:hover { border-color: var(--highlight); transform: scale(1.02); }
+.option-btn.correct { background: var(--correct); border-color: var(--correct); }
+.option-btn.wrong { background: var(--wrong); border-color: var(--wrong); }
+
+/* Game Footer (Chat & Leaderboard) */
+.game-footer { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+.live-leaderboard { background: var(--card-bg); padding: 15px; border-radius: 10px; text-align: left; }
+.live-leaderboard ol { padding-left: 20px; margin-top: 10px; }
+.chat-box { background: var(--card-bg); border-radius: 10px; display: flex; flex-direction: column; overflow: hidden;}
+#chat-messages { flex: 1; padding: 10px; max-height: 100px; overflow-y: auto; text-align: left; font-size: 0.9rem; }
+#chat-messages p { margin-bottom: 5px; }
+#chat-input { margin: 0; border-radius: 0; padding: 10px; border-top: 1px solid #333; }
+
+/* Results */
+.podium { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+.podium div { background: var(--card-bg); padding: 20px; border-radius: 10px; width: 150px; }
+.podium div:nth-child(1) { border: 2px solid gold; transform: scale(1.1); }
+.podium div:nth-child(2) { border: 2px solid silver; }
+.podium div:nth-child(3) { border: 2px solid #cd7f32; }
+
+.review-box { text-align: left; background: var(--card-bg); padding: 20px; border-radius: 10px; margin-bottom: 20px; max-height: 250px; overflow-y: auto; }
+.review-item { margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+.review-item span { color: var(--correct); font-weight: bold; }
